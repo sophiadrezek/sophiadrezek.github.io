@@ -52,7 +52,7 @@ df
 ```{r}
 df <-  read.csv('https://raw.githubusercontent.com/nytimes/covid-19-data/master/us-states.csv')
 
-df
+head(df)
 ```
 
 
@@ -276,7 +276,7 @@ by(df$Survived, df$Sex, FUN = mean)
 ```{r}
 df$Survived2 <- ifelse(df$Survived==0, 
                         'Did not survive','Survived')
-df
+head(df)
 ```
 
 
@@ -285,7 +285,7 @@ library(dplyr)
 df$Survived2 <- case_when(df$Survived==0 ~ 'Did not survive', 
                             TRUE ~ 'Survived')
 
-df
+head(df)
 ```
 
 
@@ -298,7 +298,7 @@ df
 ```{r}
 df$Survived2 <- ifelse(df$Survived==0, 
                         'Did not survive','Survived')
-df
+head(df)
 ```
 
 

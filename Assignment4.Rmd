@@ -297,15 +297,15 @@ head(df2)
 
 
 ```{r}
-df2 %>% select(PassengerId, Survived)
+df2 %>% select(PassengerId, Survived) %>% head(6)
 ```
 
 ```{r}
-df2 %>% filter(Survived==1)
+df2 %>% filter(Survived==1) %>% head(6)
 ```
 
 ```{r}
-df2 %>% mutate(DoubleFare = Fare *2)
+df2 %>% mutate(DoubleFare = Fare *2) %>% head(6)
 ```
 
 
@@ -315,7 +315,7 @@ df2 %>% summarise(mean_fare = mean(Fare, na.rm=TRUE))
 
 
 ```{r}
-df2 %>% arrange(-Fare)
+df2 %>% arrange(-Fare) %>% head(6)
 ```
 
 

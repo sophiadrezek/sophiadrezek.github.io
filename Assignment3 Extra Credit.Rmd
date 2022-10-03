@@ -1,0 +1,120 @@
+---
+title: "Assignment3 Extra Credit"
+author: "Sophia Drezek"
+date: "2022-09-20"
+output: html_document
+---
+
+
+16.  Find your own dataset, import it and implement the following functions on the data
+
+- head
+- str
+- names
+- mean, min, max
+- table
+- is.na
+- colSums
+- class
+- cor
+- by
+- ifelse
+- case_when
+
+```{r}
+setwd("C:/Users/student/OneDrive/OneDrive - Bryant University/Senior Semester 1/MATH 421/Assignments/Math 421")
+df <- read.csv('adult_census.csv')
+
+head(df)
+
+```
+
+
+
+```{r}
+str(df)
+
+```
+
+```{r}
+names(df)
+```
+
+
+```{r}
+mean(df$age, na.rm=TRUE)
+max(df$age, na.rm=TRUE)
+min(df$age, na.rm=TRUE)
+```
+
+```{r}
+table(df$race)
+```
+
+```{r}
+sum(is.na(df))
+```
+
+```{r}
+colSums(is.na(df))
+```
+
+```{r}
+class(df$occupation)
+```
+
+
+```{r}
+cor(df$education.num, df$hours.per.week)
+```
+
+```{r}
+by(df$education.num, df$sex, FUN = mean)
+```
+
+
+```{r}
+df$sex2 <- ifelse(df$sex=='Female', 
+                        0,1)
+head(df)
+```
+
+
+```{r}
+library(dplyr)
+df$age2 <- case_when(df$age<25 ~ 'Young adult', 
+                     df$age<45 ~ 'Adult', 
+                     df$age<65 ~ 'Middle-aged', 
+                     df$age<80 ~ 'Senior Citizen', 
+                     TRUE ~ 'Elderly')
+
+head(df)
+```
+
+
+
+17.  In the dataset in #16, practice the follows.  You can reuse the code of 16. 
+
+- Create a categorical variable from a continuous variable
+- From one categorical variable, create a new categorical variable with fewer categories
+
+
+```{r}
+df$capital.loss2 <- case_when(df$capital.loss<1500 ~ 'low loss',
+                              df$capital.loss<3000 ~ 'mid loss',
+                              TRUE~ 'high loss')
+
+table(df$capital.loss2)
+```
+
+
+
+```{r}
+df$age3 <- case_when(df$age2 %in% c('Young adult','Adult') ~ 'Young',
+                     df$age2 %in% c('Middle-aged') ~ 'Middle-aged',
+                     TRUE~'old')
+
+table(df$age3)
+```
+
+

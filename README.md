@@ -16,6 +16,10 @@
 
 [Click here to my Assignment 6](Assignment6.html)
 
+[Link to the plot](avg_lead_time_by_month.png)
+
+[Click here to my Assignment 7](Assignment7.html)
+
 
 
 

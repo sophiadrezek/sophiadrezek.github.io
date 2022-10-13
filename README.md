@@ -20,6 +20,9 @@
 
 [Click here to my Assignment 7](Assignment7.html)
 
+[Click here to my Assignment 7 Extra Credit](Assignment7_extra_credits.html)
+
+
 
 
 

@@ -22,6 +22,9 @@
 
 [Click here to my Assignment 7 Extra Credit](Assignment7_extra_credits.html)
 
+[Click here to my Assignment 8](Assignment8.html)
+
+[Click here to my Assignment 9](Assignment9.html)
 
 
 

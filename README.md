@@ -32,4 +32,7 @@
 
 [Click here to my Assignment 12](Assignment12.html)
 
+[Click here to my Midterm](Midterm1.html)
+
+[Click here to my Midterm Presentation](Midterm_pres.html)
 

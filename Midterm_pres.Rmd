@@ -1,0 +1,145 @@
+
+---
+title: "Math421 Midterm"
+author: Sophia Drezek
+output:
+  xaringan::moon_reader:
+    lib_dir: libs
+    nature:
+      highlightStyle: github
+      highlightLines: true
+      countIncrementalSlides: false
+
+---
+# Plot 1
+
+```{r setup, include=FALSE}
+options(htmltools.dir.version = FALSE)
+```
+
+```{r xaringan-tile-view, echo=FALSE}
+xaringanExtra::use_tile_view()
+```
+
+
+```{r xaringan-panelset, echo=FALSE}
+xaringanExtra::use_panelset()
+```
+
+```{r, echo=FALSE}
+xaringanExtra::use_webcam()
+```
+
+```{r xaringan-fit-screen, echo=FALSE}
+xaringanExtra::use_fit_screen()
+```
+
+![](plot1.png)
+
+
+---
+# Plot 2
+
+![](plot2.png)
+
+---
+# Plot 3
+
+![](plot3.png){height=20%}
+
+---
+# Plot 4
+
+![](plot4.png)
+
+---
+# Plot 5
+
+![](plot5.png)
+
+---
+# Plot 6
+
+![](plot6.png)
+
+---
+# Plot 7
+
+![](plot7.png)
+
+---
+# Plot 8
+
+![](plot8.png)
+
+---
+# Plot 9
+
+![](plot9.png)
+
+---
+# Plot 10
+
+![](plot10.png)
+
+---
+# Animated Plot
+
+![](plot11.png)
+
+---
+class: inverse, middle, center
+
+# Model Comparisons - First target variable
+Total charge - high & low
+
+---
+# Model 1 - Ranger
+
+![](plot12.png)
+
+---
+# Model 2 - Rborist
+
+![](plot13.png)
+---
+# Comparison
+
+![](plot14.png)
+
+---
+class: inverse, middle, center
+
+# Model Comparisons - Second target variable
+Length of stay - high & low
+
+---
+# Model 1 - Ranger
+
+![](plot15.png)
+
+---
+# Model 2 - Rborist
+
+![](plot16.png)
+
+---
+# Comparison
+
+![](plot17.png)
+
+---
+# Challenges
+
+-Time-consuming models 
+
+    -"Ranger"
+
+-Errors with target variable and prediction 
+
+    -Changed target to class 'factor'
+
+-Creating the presentation
+
+-Resizing the images
+

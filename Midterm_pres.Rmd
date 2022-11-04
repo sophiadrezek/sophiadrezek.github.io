@@ -85,7 +85,7 @@ xaringanExtra::use_fit_screen()
 ---
 # Animated Plot
 
-![](plot11.png)
+![](plot11.gif)
 
 ---
 class: inverse, middle, center

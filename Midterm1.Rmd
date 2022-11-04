@@ -397,9 +397,6 @@ plot11 <- df1 %>% group_by(provider,moa) %>% count(provider) %>%
 plot11
 ```
 
-```{r}
-ggsave(filename = 'plot11.png', plot = plot11)
-```
 
 3. Write a paragraph to summarize the section and give your comments on the results. 
 
@@ -559,8 +556,8 @@ cm$overall[1]
 6. Create another `target` variable (binary), decide the input variables and redo 1 to 5. 
 
 ```{r}
-df1$target <- case_when(df1$los < median(df1$los) ~ 'low',
-                        TRUE ~ 'high')
+df1$target <- case_when(df1$los < median(df1$los) ~ 'short',
+                        TRUE ~ 'long')
 ```
 
 ```{r}

@@ -1,18 +1,17 @@
 ---
-title: "Math421 Midterm"
-author: "Sophia Drezek"
-date: "2022-10-24"
-output: 
+output:
   html_document:
-  pdf_document: default
-  word_document: default
+    theme: united
+title: "Math 421 - Midterm"
+author: "Sophia Drezek"
 ---
 
+---
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(echo = FALSE)
 ```
 
--------
+# {.tabset}
 
 ## I. Data Wranggling
 
@@ -218,6 +217,10 @@ plot1 <- df1 %>% group_by(sex) %>% count(moa) %>%
        title = 'Number of Patients Admitted per Month', 
        caption = 'Jan, May, Aug, and Oct have the highest intake of patients & mostly females are admitted.')
 
+plot1
+```
+
+```{r}
 ggsave(filename = 'plot1.png', plot = plot1)
 ```
 
@@ -231,6 +234,9 @@ plot2 <- df1 %>% group_by(provider) %>%
        title = 'Average Total Charge by Each Provider', 
        caption = 'Providers 7205, 7213, and 7215 have the highest average total charge.')
 
+plot2
+```
+```{r}
 ggsave(filename = 'plot2.png', plot = plot2)
 ```
 
@@ -244,6 +250,10 @@ plot3 <- df1 %>% group_by(provider,sex) %>% count(provider) %>%
        title = 'Number of Patients Admitted by Each Provider', 
        caption = 'Providers 7205 admits the highest number of patients.')
 
+plot3
+```
+
+```{r}
 ggsave(filename = 'plot3.png', plot = plot3)
 ```
 
@@ -259,9 +269,12 @@ plot4 <- df1 %>% group_by(provider,sex) %>%
        title = 'Average Length of Stay by Each Provider', 
        caption = 'Provider 7215 has the highest average length of stay per patient for both males and females.')
 
-ggsave(filename = 'plot4.png', plot = plot4)
+plot4
 ```
 
+```{r}
+ggsave(filename = 'plot4.png', plot = plot4)
+```
 
 ```{r}
 plot5 <- df1 %>% ggplot()+ 
@@ -273,6 +286,10 @@ plot5 <- df1 %>% ggplot()+
        caption = 'This shows the time each patient stayed broken down by age and sex. 
        There is no major difference between males and females length of stay.')
 
+plot5
+```
+
+```{r}
 ggsave(filename = 'plot5.png', plot = plot5)
 ```
 
@@ -285,6 +302,10 @@ plot6 <- df %>% ggplot()+
        caption = 'Distribution of patients admitted by age.
        Older patients are admitted more often.')
 
+plot6
+```
+
+```{r}
 ggsave(filename = 'plot6.png', plot = plot6)
 ```
 
@@ -297,6 +318,10 @@ plot7 <- df1 %>% ggplot()+
        title = 'Total Cost vs Length of Stay', 
        caption = 'On average, the total charge increases the more days a patient is in the hospital.')
 
+plot7
+```
+
+```{r}
 ggsave(filename = 'plot7.png', plot = plot7)
 ```
 
@@ -310,6 +335,10 @@ plot8 <- df1 %>% group_by(season) %>%
        title = 'Average Length of Stay by Season', 
        caption = 'The average length of stay is approximately the same for all 4 seasons.')
 
+plot8
+```
+
+```{r}
 ggsave(filename = 'plot8.png', plot = plot8)
 ```
 
@@ -322,8 +351,12 @@ plot9 <- df1 %>% ggplot()+
        caption = 'This shows the distrubtion of age per season.
        Each season has a relatively similar distribution.')
 
+plot9
+```
+```{r}
 ggsave(filename = 'plot9.png', plot = plot9)
 ```
+
 
 ```{r}
 plot10 <- df1 %>% ggplot()+ 
@@ -336,8 +369,13 @@ plot10 <- df1 %>% ggplot()+
        caption = 'This shows the correlation between age and total charge broken down by season.
        For the most part, age does not impact the total charge.')
 
+
+plot10
+```
+```{r}
 ggsave(filename = 'plot10.png', plot = plot10)
 ```
+
 
 2. Make an animation plot. 
 
@@ -356,6 +394,10 @@ plot11 <- df1 %>% group_by(provider,moa) %>% count(provider) %>%
        title = 'Number of Patients Admitted each Month by Provider', 
        caption = 'This shows the number of patients admitted each month by provider.')
 
+plot11
+```
+
+```{r}
 ggsave(filename = 'plot11.png', plot = plot11)
 ```
 

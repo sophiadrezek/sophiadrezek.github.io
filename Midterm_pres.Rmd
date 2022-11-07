@@ -131,7 +131,7 @@ Length of stay - high & low
 ---
 # Challenges
 
--Time-consuming models 
+-Time-consuming models -- a lot of data
 
     -"Ranger"
 

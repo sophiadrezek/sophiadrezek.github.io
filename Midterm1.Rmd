@@ -388,10 +388,9 @@ plot11 <- df1 %>% group_by(provider,moa) %>% count(provider) %>%
   ggplot()+
   geom_col(mapping=aes(x = moa, y = n))+
   transition_states(provider) +
-  labs(title = 'Provider: {closest_state}')+
   labs(x='Month of Admission', 
        y = 'Number of Patients',
-       title = 'Number of Patients Admitted each Month by Provider', 
+       title = 'Number of Patients Admitted each Month by Provider: {closest_state}', 
        caption = 'This shows the number of patients admitted each month by provider.')
 
 plot11

@@ -1,0 +1,283 @@
+
+---
+output: 
+  html_document:
+  pdf_document: default
+  word_document: default
+title: "Assignment 15: Writing a function - Conditional Statement"
+---
+
+***How to do it?***: 
+
+- Open the Rmarkdown file of this assignment ([link](assignment15.Rmd)) in Rstudio. 
+
+- Right under each **question**, insert  a code chunk (you can use the hotkey `Ctrl + Alt + I` to add a code chunk) and code the solution for the question. 
+
+- `Knit` the rmarkdown file (hotkey: `Ctrl + Alt + K`) to export an html.  
+
+-  Publish the html file to your Githiub Page. 
+
+***Submission***: Submit the link on Github of the assignment to Canvas
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(message = FALSE)
+```
+
+-------
+
+#### NOTICE: Question 7 and 8 are optional. 
+
+-------
+
+1. Write a function to calculate the age of a person.  Give an example to test your function. 
+
+- Input: a number, x, (year born)
+
+- Output: Print out "You are r age". Where r is the age of the person, i.e. 2020 - x. 
+
+Hint: [Similar Function](https://bryantstats.github.io/math421/gganimate/17_writing_functions.html#42)
+
+
+```{r}
+age <- function(x)
+{
+  r = 2022 - x
+  print(paste0('You are ', r, ' years old!'))
+}
+```
+
+```{r}
+age(1970)
+```
+
+-------
+
+2. Write the following function. Give an example to test your function. 
+
+- Input: a number
+
+- Output: print out: "You input an even number!" if the number is even or "You input an odd number!" otherwise. 
+
+Hint: [Similar Function](https://bryantstats.github.io/math421/gganimate/17_writing_functions.html#46)
+
+```{r}
+even_odd <- function(x)
+{
+  if(x%%2 == 0)
+  {
+    print('You input an even number!') 
+  }
+  else
+  {
+    print('You input an odd number!')
+  }
+}
+```
+
+```{r}
+even_odd(78)
+```
+
+```{r}
+even_odd(101)
+```
+
+-------
+
+3. Write the following function.  Give an example to test your function. 
+
+- Input: a numeric vector 
+
+- Output:  
+
+  - if the input vector has missing values: return the input vector with missing values replaced by mean
+  
+  - if the input vector has no missing value: return the same input vector
+  
+Hint: [Similar Function](https://bryantstats.github.io/math421/gganimate/17_writing_functions.html#50)
+
+```{r}
+mean_impute <- function(x)
+{
+  if(is.numeric(x))
+  {
+    # Find the mean of x
+    mean_of_x <- mean(x, na.rm=TRUE)
+      
+    # Replace the missing by the mean
+    library(tidyr)
+    x <- replace_na(x, mean_of_x) 
+  }
+return(x)    
+}
+```
+
+```{r}
+library(tidyverse)
+df <- read_csv('titanic.csv')
+x1 <- mean_impute(df$Age)
+sum(is.na(x1))
+```
+
+
+-------
+
+4. Write the following function.  Give an example to test your function. 
+
+- Input: a vector x 
+
+- Output:  The vector x where the missing values replaced by the mean (if x is numeric) or the mode (if x is non-numeric).  If x does not have missing value, return the same vector x.  
+
+Hint: Use If-statement to combine the function in Question 3 and [this function](https://bryantstats.github.io/math421/gganimate/17_writing_functions.html#49)
+
+```{r}
+missing_impute <- function(x)
+{
+  if(!is.numeric(x))
+  {
+    # Find the mode of x
+    mode_of_x <- names(sort(-table(x)))[1]
+    # Replace the missing by the mode
+    library(tidyr)
+    x <- replace_na(x, mode_of_x) 
+  }
+  else
+  {
+    # Find the mean of x
+    mean_of_x <- mean(x, na.rm=TRUE)
+      
+    # Replace the missing by the mean
+    library(tidyr)
+    x <- replace_na(x, mean_of_x) 
+  }
+return(x)    
+}
+```
+
+```{r}
+library(tidyverse)
+df <- read_csv('titanic.csv')
+x1 <- missing_impute(df$Embarked)
+sum(is.na(x1))
+```
+
+```{r}
+x1 <- missing_impute(df$Age)
+sum(is.na(x1))
+```
+
+-------
+
+5. Write the following function. Give examples to test your function. 
+
+- Input: A data frame of two variables x and y
+
+- Output: 
+
+  - A boxplot of x by y if x is numeric and y is non-numeric
+ 
+  - A boxplot of y by x if y is numeric and x is non-numeric
+ 
+  - print out 'This function cannot visualize your data' otherwise
+
+Hint: 
+
+- [Similar Function](https://bryantstats.github.io/math421/gganimate/17_writing_functions.html#53)
+ 
+- You can refer to this slide to plot a boxplot: https://bryantstats.github.io/math421/slides/6_viz.html#36
+
+```{r}
+viz <- function(d)
+{
+  if(is.numeric(d[[1]])&!is.numeric(d[[2]]))
+  {
+    d %>% ggplot(aes(x = d[[1]], y = d[[2]]))+
+      geom_boxplot()+
+      labs(x = names(d)[1], y = names(d)[2])
+  }
+  else if (is.numeric(d[[2]])&!is.numeric(d[[1]]))
+  {
+    d %>% ggplot(aes(x = d[[2]], y = d[[1]]))+
+      geom_boxplot()+
+      labs(x = names(d)[2], y = names(d)[1])
+  }
+  else 
+  {
+    print('This function cannot visualize your data.')
+  }
+}
+```
+
+```{r}
+d <- df %>% select(Age, Sex)
+viz(d)
+```
+
+```{r}
+d <- df %>% select(Embarked, Age)
+viz(d)
+```
+
+```{r}
+d <- df %>% select(Fare, Age)
+viz(d)
+```
+
+-------
+ 
+6. Combine the function in Question 5 and the function in this example ([Link](https://bryantstats.github.io/math421/gganimate/17_writing_functions.html#53)) to have a function that can plot all possible cases (2 categorical, 2 numeric, 1 numeric and 1 categorical). 
+
+```{r}
+viz_extra <- function(d)
+{
+  if(is.numeric(d[[1]])&!is.numeric(d[[2]]))
+  {
+    d %>% ggplot(aes(x = d[[1]], y = d[[2]]))+
+      geom_boxplot()+
+      labs(x = names(d)[1], y = names(d)[2])
+  }
+  else if (is.numeric(d[[2]])&!is.numeric(d[[1]]))
+  {
+    d %>% ggplot(aes(x = d[[2]], y = d[[1]]))+
+      geom_boxplot()+
+      labs(x = names(d)[2], y = names(d)[1])
+  }
+  else if(is.numeric(d[[1]])&is.numeric(d[[2]]))
+  {
+    d %>% ggplot(aes(x = d[[2]], y = d[[1]]))+
+      geom_boxplot()+
+      labs(x = names(d)[2], y = names(d)[1])
+  }
+  else if (!(is.numeric(d[[1]])|is.numeric(d[[2]])))
+  {
+    d %>% ggplot(aes(x = d[[2]], y = d[[1]]))+
+      geom_boxplot()+
+      labs(x = names(d)[2], y = names(d)[1])
+  }
+  else 
+  {
+    print('This function cannot visualize your data.')
+  }
+}
+```
+
+```{r}
+d <- df %>% select(Fare, Sex)
+viz_extra(d)
+```
+
+```{r}
+d <- df %>% select(Age, Embarked)
+viz_extra(d)
+```
+
+```{r}
+d <- df %>% select(Survived, SibSp)
+viz_extra(d)
+```
+
+```{r}
+d <- df %>% select(Pclass, Age)
+viz_extra(d)
+```
+-------
